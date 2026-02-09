@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Print3D | Servicii Profesionale de Printare 3D</title>
+    <meta name="description" content="Servicii profesionale de printare 3D pentru prototipare rapidă, piese personalizate, modele architecturale și producție în serie. Tehnologie avansată, calitate premium.">
+    
+    <style>
+        :root {
+            --primary: #2a5caa; /* Albastru tehnologic */
+            --secondary: #f0f7ff; /* Albastru deschis */
+            --accent: #ff6b35; /* Portocaliu vibrant */
+            --dark: #1a2b4a;
+            --light: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent), #ff8c42);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 40px 120px;
+            background: linear-gradient(135deg, #1a2b4a 0%, #2a5caa 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Services */
+        .service-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Technology Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--secondary);
+            border-radius: 15px;
+        }
+
+        .tech-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        /* Stilizare pentru formular */
+        .contact-form form {
+            width: 100%;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(42, 92, 170, 0.1);
+        }
+
+        .contact-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 40px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            nav a {
+                margin: 0;
+            }
+            
+            .hero {
+                padding: 150px 20px 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            section {
+                padding: 70px 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    
+    <!-- Font Awesome pentru iconițe -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="main-header">
+        <div class="logo">
+            <div class="logo-icon">🖨️</div>
+            <div>Precision <span style="color: var(--accent);">Print3D</span></div>
+        </div>
+        <nav>
+            <a href="#acasa">Acasă</a>
+            <a href="#servicii">Servicii</a>
+            <a href="#portofoliu">Portofoliu</a>
+            <a href="#tehnologii">Tehnologii</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="cta-button">Cere ofertă</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="acasa">
+        <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
+            <h1>Transformă ideile în realitate cu printarea 3D</h1>
+            <p>Servicii profesionale de printare 3D pentru prototipare rapidă, piese personalizate și producție în serie. Calitate premium, tehnologie avansată, livrare rapidă.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#servicii" class="cta-button">Vezi serviciile</a>
+                <a href="#portofoliu" class="cta-button" style="background: transparent; border: 2px solid white; box-shadow: none;">Portofoliu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicii -->
+    <section id="servicii">
+        <h2 class="section-title">Serviciile noastre</h2>
+        <div class="grid">
+            <div class="card animate">
+                <img src="prototipare.jpg" alt="Prototipare rapidă" class="card-img">
+                <div class="card-content">
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Prototipare rapidă</h3>
+                    <p>Transformă conceptele în prototipuri funcționale în câteva zile. Ideal pentru dezvoltatori de produse, ingineri și designeri.</p>
+                </div>
+            </div>
+            
+            <div class="card animate">
+                <img src="piese.jpg" alt="Piese personalizate" class="card-img">
+                <div class="card-content">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Piese personalizate</h3>
+                    <p>Creăm piese unice adaptate nevoilor tale. De la componente industriale la articole personalizate, avem soluția potrivită.</p>
+                </div>
+            </div>
+            
+            <div class="card animate">
+                <img src="arhitectura2.jpg" alt="Modele architecturale" class="card-img">
+                <div class="card-content">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>Modele architecturale</h3>
+                    <p>Modele 3D detaliate pentru arhitecți și designeri de interior. Prezentări vizuale realiste ale proiectelor tale.</p>
+                </div>
+            </div>
+            
+            <div class="card animate">
+                <img src="serie.jpg" alt="Producție în serie" class="card-img">
+                <div class="card-content">
+                    <div class="service-icon"><i class="fas fa-industry"></i></div>
+                    <h3>Producție în serie</h3>
+                    <p>Producție eficientă de piese 3D în volume mari. Optimizare costuri pentru producția de serie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofoliu -->
+    <section id="portofoliu" style="background-color: var(--secondary);">
+        <h2 class="section-title">Portofoliu</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 18px;">Explorează o selecție din proiectele noastre recente. Fiecare piesă este creată cu precizie și atenție la detalii.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="mechanical.jpg" alt="Piese mecanice">
+                <div class="gallery-overlay">
+                    <h4>Piese mecanice</h4>
+                    <p>Componente industriale de precizie</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="personalized.jpg" alt="Piese personalizate complexe">
+                <div class="gallery-overlay">
+                    <h4>Piese personalizate</h4>
+                    <p>Design complex, realizare precisă</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="arhitectural.jpg" alt="Modele arhitecturale">
+                <div class="gallery-overlay">
+                    <h4>Model arhitectural</h4>
+                    <p>Structură detaliată, scală precisă</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="bijuterii.jpg" alt="Bijuterii personalizate">
+                <div class="gallery-overlay">
+                    <h4>Bijuterii personalizate</h4>
+                    <p>Design unic, materiale de calitate</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="promotionale.jpeg" alt="Articole promoționale">
+                <div class="gallery-overlay">
+                    <h4>Articole promoționale</h4>
+                    <p>Branding corporativ personalizat</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="productie.jpg" alt="Producție industrială">
+                <div class="gallery-overlay">
+                    <h4>Producție industrială</h4>
+                    <p>Piese pentru aplicații industriale</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="robotics.jpg" alt="Prototip robotic">
+                <div class="gallery-overlay">
+                    <h4>Prototip robotic</h4>
+                    <p>Asamblu pentru robot educațional</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="figurine.jpg" alt="Figurine personalizate">
+                <div class="gallery-overlay">
+                    <h4>Figurine personalizate</h4>
+                    <p>Arta și design în 3D</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tehnologii -->
+    <section id="tehnologii">
+        <h2 class="section-title">Tehnologii și materiale</h2>
+        <div class="tech-grid">
+            <div class="tech-item animate">
+                <div class="tech-icon"><i class="fas fa-print"></i></div>
+                <h3>FDM (Fused Deposition Modeling)</h3>
+                <p>Tehnologie ideală pentru prototipare rapidă și piese funcționale. Materiale: PLA, ABS, PETG, TPU.</p>
+            </div>
+            
+            <div class="tech-item animate">
+                <div class="tech-icon"><i class="fas fa-sun"></i></div>
+                <h3>SLA (Stereolithography)</h3>
+                <p>Rezoluție extrem de mare pentru detalii fine. Perfect pentru bijuterii, modele dentare și componente mici.</p>
+            </div>
+            
+            <div class="tech-item animate">
+                <div class="tech-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>SLS (Selective Laser Sintering)</h3>
+                <p>Piese durabile, fără necesitatea structurilor de susținere. Materiale: Nylon, materiale ingineresti.</p>
+            </div>
+            
+            <div class="tech-item animate">
+                <div class="tech-icon"><i class="fas fa-palette"></i></div>
+                <h3>Multi-material și full color</h3>
+                <p>Imprimarea cu mai multe materiale sau culori în același proces. Realism și funcționalitate superioară.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contactează-ne</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informații de contact</h3>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <strong>Adresă:</strong><br>
+                        Servicii executate in regim remote
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <strong>Telefon:</strong><br>
+                        0742 067 582
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <strong>Email:</strong><br>
+                        precisionprint3d@protonmail.com
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <strong>Program:</strong><br>
+                        Luni - Vineri: 9:00 - 18:00<br>
+                        Sâmbătă: 10:00 - 16:00
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Trimite-ne un mesaj</h3>
+                
+                <!-- FORMULAR FORMSPREE INTEGRAT -->
+                <form action="https://formspree.io/f/mvzboezq" method="POST" id="contact-form-final">
+                    <label for="name">Nume complet:</label>
+                    <input type="text" id="name" name="name" placeholder="Numele tău" required>
+                    
+                    <label for="email">Adresa de email:</label>
+                    <input type="email" id="email" name="email" placeholder="exemplu@email.com" required>
+                    
+                    <label for="phone">Telefon (opțional):</label>
+                    <input type="tel" id="phone" name="phone" placeholder="07xx xxx xxx">
+                    
+                    <label for="message">Mesajul tău:</label>
+                    <textarea id="message" name="message" placeholder="Descrie proiectul tău sau întreabă-ne orice..." rows="5" required></textarea>
+                    
+                    <button type="submit" id="submit-final">Trimite mesaj</button>
+                    
+                    <div id="success-msg-final" class="success-message">
+                        ✅ Mesajul se trimite... Verifică-ți email-ul pentru confirmare.
+                    </div>
+                </form>
+                
+                <p style="margin-top: 15px; font-size: 14px; color: #666; text-align: center;">
+                    <i class="fas fa-info-circle"></i> După trimitere, vei vedea o pagină de confirmare Formspree. Mesajul tău a fost trimis.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Precision Print3D</h3>
+                <p>Servicii profesionale de printare 3D pentru persoane fizice și companii. Transformăm ideile în realitate cu tehnologie de ultimă generație.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Link-uri rapide</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 10px;"><a href="#acasa" style="color: #ccc; text-decoration: none;">Acasă</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#servicii" style="color: #ccc; text-decoration: none;">Servicii</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#portofoliu" style="color: #ccc; text-decoration: none;">Portofoliu</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#tehnologii" style="color: #ccc; text-decoration: none;">Tehnologii</a></li>
+                    <li style="margin-bottom: 10px;"><a href="#contact" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Servicii</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 10px;">Prototipare rapidă</li>
+                    <li style="margin-bottom: 10px;">Piese personalizate</li>
+                    <li style="margin-bottom: 10px;">Modele architecturale</li>
+                    <li style="margin-bottom: 10px;">Producție în serie</li>
+                    <li style="margin-bottom: 10px;">Consultanță 3D</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2023 Precision Print3D. Toate drepturile rezervate. | Servicii profesionale de printare 3D
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with the 'animate' class
+        document.querySelectorAll('.card, .tech-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Funcție simplă pentru formular
+        const form = document.getElementById('contact-form-final');
+        const successMsg = document.getElementById('success-msg-final');
+        const submitBtn = document.getElementById('submit-final');
+        
+        form.addEventListener('submit', function(e) {
+            // Afișează mesaj de succes temporar
+            successMsg.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Se trimite...';
+            
+            // Lăsăm formularul să se trimită normal către Formspree
+            // După 3 secunde, resetează mesajul (pentru cazul în care rămâne pe pagină)
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Trimite mesaj';
+            }, 3000);
+        });
+
+        // Scroll smooth pentru butoane
+        document.querySelectorAll('.cta-button[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
